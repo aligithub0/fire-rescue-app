@@ -38,7 +38,7 @@ if (!isset($_SESSION['admin_id'])) {
         <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-                <div class="sidebar-brand-text mx-3">hello</div>
+                <div class="sidebar-brand-text mx-3">Fire Rescue System</div>
             </a>
 
             <!-- Divider -->
@@ -152,7 +152,7 @@ if (!isset($_SESSION['admin_id'])) {
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">hello</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">User</span>
                                 <img class="img-profile rounded-circle"
                                     src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPetTyj1vEcs5ZXelLe4QaJdiuwu-5kVtJBQ&usqp=CAU />
                             </a>
