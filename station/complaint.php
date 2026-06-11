@@ -1,5 +1,6 @@
 <?php include 'include/header.php'; ?>
 <?php include '../connection/connectdatabase.php'; ?>
+<?php include '../ai/severity_client.php'; ?>
 
 
 <div class="container">
@@ -23,6 +24,26 @@ if (isset($_GET['reject'])){
                     <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
                       <div class="card text-white shadow bg-light">
                         <div class="card-body">
+<?php
+  $sev     = $data['severity'] ?? 'unknown';
+  $cls     = severity_badge_class($sev);
+  $conf    = (float)($data['ai_confidence'] ?? 0);
+  $engines = (int)($data['engines_recommended'] ?? 0);
+?>
+                          <div class="alert alert-<?=$cls?> text-dark mb-3" role="alert">
+                            <strong>AI Severity:</strong>
+                            <span class="badge badge-<?=$cls?>"><?=strtoupper(htmlspecialchars($sev))?></span>
+                            &nbsp;|&nbsp; Recommended engines: <strong><?=$engines?></strong>
+                            &nbsp;|&nbsp; Threat: <strong><?=htmlspecialchars($data['threat_level'] ?? '-')?></strong>
+                            &nbsp;|&nbsp; Type: <?=htmlspecialchars($data['fire_type'] ?? '-')?>
+<?php if ($sev === 'unknown') { ?>
+                            <span class="text-muted ml-2">(AI not available)</span>
+<?php } elseif ($conf < 0.5) { ?>
+                            <span class="text-danger ml-2">&#9888; Low confidence (<?=number_format($conf*100)?>%) &mdash; please review the image</span>
+<?php } else { ?>
+                            <span class="text-muted ml-2">Confidence: <?=number_format($conf*100)?>%</span>
+<?php } ?>
+                          </div>
                           <div class="row">
                             <div class="col-lg-5">
                               <img src="../upload/<?=$data['complaint_image']?>" height="300px" alt="">

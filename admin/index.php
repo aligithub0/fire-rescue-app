@@ -128,6 +128,39 @@ $reject=mysqli_num_rows($select); ?>
             </div>
         </div>
 
+    </div>
+</div>
+
+<!-- AI Severity Breakdown -->
+<div class="container-fluid col-md-12 col-sm-10">
+    <h5 class="text-gray-800 mb-3">AI Severity Breakdown</h5>
+    <div class="row">
+<?php
+  $high   = mysqli_num_rows(mysqli_query($conn, "SELECT 1 FROM complaint WHERE severity='High'"));
+  $medium = mysqli_num_rows(mysqli_query($conn, "SELECT 1 FROM complaint WHERE severity='Medium'"));
+  $low    = mysqli_num_rows(mysqli_query($conn, "SELECT 1 FROM complaint WHERE severity='Low'"));
+  $sev_cards = [
+    ['High Severity',   $high,   'danger'],
+    ['Medium Severity', $medium, 'warning'],
+    ['Low Severity',    $low,    'success'],
+  ];
+  foreach ($sev_cards as $card) { list($label, $count, $color) = $card; ?>
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card shadow h-100 py-2 bg-gradient-<?=$color?>">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center text-center">
+                        <div class="col mr-2">
+                            <div class="font-weight-bold text-white text-uppercase mb-1"><?=$label?></div>
+                            <div class="h5 mb-0 font-weight-bold text-white"><?=$count?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<?php } ?>
+    </div>
+</div>
+
         <!-- End of Main Content -->
 
         <?php include'include/footer.php'; ?>

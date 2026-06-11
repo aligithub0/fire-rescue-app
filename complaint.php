@@ -7,7 +7,13 @@
       $msg="Your Complaint Is Submitted at : ".'<b>'. $data['station_name'].'</b>';
       $status="success";
   }elseif (isset($_GET['error'])) {
-     $msg="Something went Wrong";
+      $errors = [
+          'location' => 'Location not detected. Please ALLOW location access in your browser, then try again.',
+          'image'    => 'No image received. Please take a picture or upload one before submitting.',
+          'station'  => 'No fire station found near your location.',
+          'post'     => 'Submission failed (no data received). The image may be too large — try a smaller photo.',
+      ];
+      $msg = $errors[$_GET['error']] ?? 'Something went Wrong';
       $status="danger";
   }
 ?>
@@ -94,9 +100,13 @@ var y = document.getElementById('long');
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition, showPositionError, {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0
+        });
     } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        alert("Geolocation is not supported by this browser.");
     }
 }
 
@@ -104,5 +114,26 @@ function showPosition(position) {
     x.value = position.coords.latitude;
     y.value = position.coords.longitude;
 }
+
+function showPositionError(error) {
+    var reason = {
+        1: "Location permission denied. Please allow location access and reload the page.",
+        2: "Location is unavailable right now.",
+        3: "Getting your location timed out. Please try again."
+    }[error.code] || "Could not get your location.";
+    alert(reason);
+}
+
+// Request location as soon as the page loads so it is ready before submitting.
+window.addEventListener('load', getLocation);
+
+// Final guard: block submission if we still have no coordinates.
+document.querySelector('form').addEventListener('submit', function (e) {
+    if (!x.value || !y.value) {
+        e.preventDefault();
+        alert("Your location has not been detected yet. Please allow location access and wait a moment before submitting.");
+        getLocation();
+    }
+});
 </script>
 <?php include 'include/footer.php'; ?>
