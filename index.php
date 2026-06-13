@@ -26,7 +26,7 @@
           <a href="complaint.php" class="fr-btn fr-btn-fire fr-btn-lg">
             <i class="fa-solid fa-fire-flame-curved"></i> Report Emergency
           </a>
-          <a href="posts.php" class="fr-btn fr-btn-ghost fr-btn-lg">
+          <a href="posts.php" class="fr-btn fr-btn-outline fr-btn-lg">
             <i class="fa-regular fa-newspaper"></i> Read Safety Posts
           </a>
         </div>
@@ -156,7 +156,7 @@
         <h2>Every second counts in a fire.</h2>
         <p>Don't wait. Report an emergency now and the nearest station is alerted instantly.</p>
       </div>
-      <a href="complaint.php" class="fr-btn fr-btn-dark fr-btn-lg">
+      <a href="complaint.php" class="fr-btn fr-btn-light fr-btn-lg">
         <i class="fa-solid fa-fire"></i> Report an Emergency
       </a>
     </div>
