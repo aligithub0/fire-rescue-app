@@ -58,14 +58,15 @@ if (!isset($_SESSION['team_id'])) {
         <!-- Divider -->
         <hr class="sidebar-divider my-0" />
 
+        <?php $cur = basename($_SERVER['PHP_SELF']); ?>
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
+        <li class="nav-item <?= $cur == 'index.php' ? 'active' : '' ?>">
           <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a
           >
         </li>
-        <li class="nav-item active">
+        <li class="nav-item <?= $cur == 'assigned_work.php' ? 'active' : '' ?>">
           <a class="nav-link" href="assigned_work.php">
         <i class="fas fa-fw fa-chart-area"></i>
             <span>Assigned Work</span></a

@@ -20,12 +20,8 @@
             <strong><?= htmlspecialchars($data['team_name']) ?></strong>
           </div>
           <div class="fr-profile-row">
-            <span><i class="fas fa-user"></i> Username</span>
-            <strong><?= htmlspecialchars($data['team_username']) ?></strong>
-          </div>
-          <div class="fr-profile-row">
-            <span><i class="fas fa-lock"></i> Password</span>
-            <strong><?= htmlspecialchars($data['team_password']) ?></strong>
+            <span><i class="fas fa-circle-check"></i> Status</span>
+            <strong style="color:#16b364;">Active</strong>
           </div>
         </div>
       </div>
