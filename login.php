@@ -31,7 +31,7 @@ if (isset($_GET['status'])) {
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="assets/dist/modern.css?v=6" />
+    <link rel="stylesheet" href="assets/dist/modern.css?v=8" />
   </head>
 
   <body class="fr-page fr-login-page">
@@ -40,7 +40,6 @@ if (isset($_GET['status'])) {
       <div class="fr-login-brand">
         <div class="fr-login-logo">
           <img src="assets/img/station.png" alt="Fire Rescue" />
-          <span>Fire Rescue</span>
         </div>
         <h2>Rescue Control Center</h2>
         <p>Sign in to manage stations, complaints, reports and dispatch — all from one dashboard.</p>
