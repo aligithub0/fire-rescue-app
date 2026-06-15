@@ -238,6 +238,76 @@ body.fr-page * { box-sizing: border-box; }
 .fr-socials a:hover { background: var(--fr-grad); color: #fff; transform: translateY(-3px); }
 .fr-footer-bottom { border-top: 1px solid rgba(20,15,14,.08); padding: 24px 0; text-align: center; font-size: 13.5px; color: #8a8079; }
 
+/* ==========================================================================
+   Report / Complaint form
+   ========================================================================== */
+.fr-report { background: var(--fr-cloud); padding: 60px 0 80px; min-height: calc(100vh - 76px); }
+.fr-report-head { text-align: center; margin-bottom: 34px; }
+.fr-report-head .fr-eyebrow { display: inline-flex; }
+.fr-report-head h1 { font-family: var(--fr-display); font-weight: 800; font-size: clamp(28px, 4vw, 42px); color: var(--fr-ink); margin: 12px 0 10px; }
+.fr-report-head p { color: var(--fr-muted); font-size: 16px; max-width: 560px; margin: 0 auto; }
+.fr-alert { max-width: 980px; margin: 0 auto 22px; border-radius: 14px; border: 0; padding: 15px 44px 15px 20px; font-weight: 500; box-shadow: var(--fr-shadow); }
+.fr-form-card { background: #fff; border-radius: 22px; box-shadow: var(--fr-shadow); padding: 30px; max-width: 980px; margin: 0 auto; }
+.fr-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: start; }
+.fr-cam-box #my_camera { border-radius: 14px; overflow: hidden; background: #0c0a09; min-height: 300px; display: flex; align-items: center; justify-content: center; }
+.fr-cam-box #my_camera video, .fr-cam-box #my_camera canvas { max-width: 100%; height: auto; display: block; border-radius: 12px; }
+.fr-cam-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+.fr-preview-box { background: var(--fr-cloud); border: 2px dashed rgba(20,15,14,.14); border-radius: 16px; min-height: 340px; display: grid; place-items: center; text-align: center; color: var(--fr-muted); padding: 18px; font-weight: 500; }
+.fr-preview-box img { border-radius: 12px; max-width: 100%; }
+.fr-report-submit { text-align: center; margin-top: 26px; }
+.fr-report-note { display: flex; align-items: center; justify-content: center; gap: 22px; flex-wrap: wrap; color: var(--fr-muted); font-size: 13.5px; margin-top: 20px; }
+.fr-report-note span { display: inline-flex; align-items: center; gap: 7px; }
+.fr-report-note i { color: var(--fr-red); }
+@media (max-width: 820px) { .fr-form-grid { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   Login
+   ========================================================================== */
+.fr-login-page {
+  min-height: 100vh; display: grid; place-items: center; padding: 28px;
+  background: radial-gradient(900px 500px at 85% -10%, rgba(255,122,24,.18), transparent 60%),
+              radial-gradient(800px 500px at -5% 110%, rgba(225,29,42,.12), transparent 55%),
+              linear-gradient(135deg, #ffffff 0%, #fdeee8 100%);
+}
+.fr-login { width: 100%; max-width: 940px; display: grid; grid-template-columns: 1.05fr 1fr;
+  background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 80px -30px rgba(20,15,14,.45); }
+.fr-login-brand {
+  position: relative; padding: 50px 44px; color: #fff; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center;
+  background: radial-gradient(700px 380px at 80% -10%, rgba(255,122,24,.4), transparent 60%),
+              linear-gradient(160deg, #140f0e 0%, #2a1512 55%, #3a1410 100%);
+}
+.fr-login-brand::after { content:""; position:absolute; inset:0; opacity:.05;
+  background-image: linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px);
+  background-size: 40px 40px; }
+.fr-login-brand > * { position: relative; z-index: 1; }
+.fr-login-logo { display: flex; align-items: center; gap: 12px; font-family: var(--fr-display); font-weight: 800; font-size: 20px; margin-bottom: 30px; }
+.fr-login-logo img { width: 50px; }
+.fr-login-brand h2 { font-family: var(--fr-display); font-weight: 800; font-size: 30px; line-height: 1.15; margin: 0 0 14px; }
+.fr-login-brand p { color: rgba(255,255,255,.75); font-size: 15px; margin: 0 0 28px; }
+.fr-login-roles { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.fr-login-roles li { display: flex; align-items: center; gap: 12px; font-size: 14.5px; color: rgba(255,255,255,.9); }
+.fr-login-roles i { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; background: rgba(255,255,255,.1); color: var(--fr-amber); }
+.fr-login-form { padding: 50px 48px; display: flex; flex-direction: column; justify-content: center; }
+.fr-login-form h1 { font-family: var(--fr-display); font-weight: 800; font-size: 28px; color: var(--fr-ink); margin: 0 0 6px; }
+.fr-login-form .fr-sub { color: var(--fr-muted); font-size: 15px; margin: 0 0 28px; }
+.fr-field { position: relative; margin-bottom: 18px; }
+.fr-field > i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--fr-muted); }
+.fr-input { width: 100%; padding: 15px 16px 15px 46px; border: 1.5px solid rgba(20,15,14,.13); border-radius: 12px;
+  font-size: 15px; font-family: var(--fr-font); color: var(--fr-text); transition: border-color .2s, box-shadow .2s; background: #fff; }
+.fr-input::placeholder { color: #b3aaa4; }
+.fr-input:focus { outline: none; border-color: var(--fr-red); box-shadow: 0 0 0 4px rgba(225,29,42,.12); }
+.fr-login-form .fr-btn { width: 100%; margin-top: 8px; }
+.fr-login-alert { display: flex; align-items: center; gap: 10px; background: #fdecec; color: #b3121d;
+  border: 1px solid rgba(225,29,42,.25); border-radius: 12px; padding: 12px 16px; font-size: 14px; font-weight: 500; margin-bottom: 22px; }
+.fr-login-back { text-align: center; margin-top: 22px; font-size: 14px; color: var(--fr-muted); }
+.fr-login-back a { color: var(--fr-red); font-weight: 600; }
+@media (max-width: 760px) {
+  .fr-login { grid-template-columns: 1fr; max-width: 440px; }
+  .fr-login-brand { display: none; }
+  .fr-login-form { padding: 40px 30px; }
+}
+
 /* ---- scroll reveal ---- */
 .fr-reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
 .fr-reveal.fr-in { opacity: 1; transform: none; }

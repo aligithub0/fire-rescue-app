@@ -17,48 +17,63 @@
       $status="danger";
   }
 ?>
-<div class="container mt-5">
-    <hr>
-    <h1 class="text-center bg-light">Submit Urgent Complaint</h1>
-    <hr>
+<section class="fr-report">
+  <div class="fr-container">
+    <div class="fr-report-head">
+      <span class="fr-eyebrow">Emergency Report</span>
+      <h1>Submit an Urgent Complaint</h1>
+      <p>Take or upload a live photo of the fire. We'll capture your GPS location and alert the nearest station instantly.</p>
+    </div>
+
     <?php if(isset($msg)){ ?>
-    <div class="alert alert-<?=$status?> alert-dismissible" role="alert"><a href="#" class="close" data-dismiss="alert"
-            aria-label="close">&times;</a><?=$msg?></div>
+    <div class="fr-alert alert alert-<?=$status?> alert-dismissible" role="alert">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><?=$msg?>
+    </div>
     <?php } ?>
-    <form method="POST" class="form-group" action="storeimage.php" enctype="multipart/form-data">
-        <div class="row">
-            <div class="col-md-6">
-                <div id="my_camera"></div>
-                <br />
-                <div class="col-md-12">
-                    <input type="button" value="Take Picture" class="btn btn-danger mx-auto" onClick="take_snapshot()"
-                        onfocus="getLocation()">
-                    <input type="button" value="Upload Picture" class="btn btn-primary mx-auto ml-2"
-                        onClick="document.getElementById('file_input').click()">
-                    <input type="file" id="file_input" name="uploaded_image" accept="image/*" style="display:none;"
-                        onchange="handleFileSelect(event)">
-                </div>
-                <input type="hidden" name="image" class="image-tag">
-                <input type="hidden" name="image_source" id="image_source" value="">
-                <input type="hidden" class="p-1" name="complaint_latitude" id="lat" required>
-                <input type="hidden" class="p-1" name="complaint_longitude" id="long" required>
 
+    <form method="POST" action="storeimage.php" enctype="multipart/form-data">
+      <div class="fr-form-card">
+        <div class="fr-form-grid">
+          <div class="fr-cam-box">
+            <div id="my_camera"></div>
+            <div class="fr-cam-actions">
+              <button type="button" class="fr-btn fr-btn-fire" onclick="take_snapshot()" onfocus="getLocation()">
+                <i class="fa-solid fa-camera"></i> Take Picture
+              </button>
+              <button type="button" class="fr-btn fr-btn-outline" onclick="document.getElementById('file_input').click()">
+                <i class="fa-solid fa-upload"></i> Upload Picture
+              </button>
+              <input type="file" id="file_input" name="uploaded_image" accept="image/*" style="display:none;" onchange="handleFileSelect(event)">
             </div>
-            <div class="col-md-6" style="">
-                <div id="results">Your captured/uploaded image will appear here.</div>
-            </div>
-            <div class="col-md-12 text-center">
-                <div class="col-md-12 mt-1">
-                    <!-- <input type="text" class="form-control form-control-user col-md-6 p-1" placeholder="Enter Phone Number" name="contact" required>
-                
-                <input type="text" class="form-control form-control-user col-md-6 p-1" name="building" placeholder="Address e.g(Building/street no.)"  > -->
+            <input type="hidden" name="image" class="image-tag">
+            <input type="hidden" name="image_source" id="image_source" value="">
+            <input type="hidden" name="complaint_latitude" id="lat" required>
+            <input type="hidden" name="complaint_longitude" id="long" required>
+          </div>
 
-                </div>
-                <input type="submit" name="submit" value="Submit Your Complaint" class="btn btn-danger mt-2">
+          <div id="results" class="fr-preview-box">
+            <div>
+              <i class="fa-regular fa-image" style="font-size:34px; display:block; margin-bottom:10px;"></i>
+              Your captured / uploaded image will appear here.
             </div>
+          </div>
         </div>
+
+        <div class="fr-report-submit">
+          <button type="submit" name="submit" value="Submit Your Complaint" class="fr-btn fr-btn-fire fr-btn-lg">
+            <i class="fa-solid fa-paper-plane"></i> Submit Complaint
+          </button>
+        </div>
+
+        <div class="fr-report-note">
+          <span><i class="fa-solid fa-location-crosshairs"></i> GPS auto-detected</span>
+          <span><i class="fa-solid fa-robot"></i> AI severity analysis</span>
+          <span><i class="fa-solid fa-bolt"></i> Nearest station alerted</span>
+        </div>
+      </div>
     </form>
-</div>
+  </div>
+</section>
 <!-- Configure a few settings and attach camera -->
 <script language="JavaScript">
 Webcam.set({

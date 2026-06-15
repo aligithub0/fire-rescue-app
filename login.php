@@ -1,120 +1,85 @@
-<?php 
+<?php
 session_start();
 if (isset($_SESSION['admin_id'])) {
   header("location:admin/index.php");
-}elseif(isset($_SESSION['station_id'])){
+} elseif (isset($_SESSION['station_id'])) {
   header("location:station/index.php");
-}elseif(isset($_SESSION['team_id'])){
+} elseif (isset($_SESSION['team_id'])) {
   header("location:fireEngine/index.php");
 }
-?>
 
-<?php 
 if (isset($_GET['status'])) {
-    $status=$_GET['status'];
-    $msg="Username or password not correct";
+  $status = $_GET['status'];
+  $msg = "Username or password not correct";
 }
- ?>
-
-
-
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Login — Fire Rescue Response System</title>
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/truck.png" />
 
-    <!-- Custom fonts for this template-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="assets/vendor/fontawesome-free/css/all.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Custom styles for this template-->
-    <link href="assets/css/sb-admin-2.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/dist/modern.css?v=6" />
   </head>
 
-  <body class="bg-gradient-light">
-    <div class="container ">
-      <!-- Outer Row -->
-      <div class="row justify-content-center">
-        <div class="col-xl-5 col-lg-6 col-md-5 mt-5 ">
-          <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0 bg-gradient-light">
-              <!-- Nested Row within Card Body -->
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="p-5">
-                    <div class="text-center">
-                      <h1 class="h4 text-gray-900 mb-4">Login!</h1>
-<?php if(isset($msg)){ ?>
-    <div class="alert alert-<?=$status?> alert-dismissible" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><?=$msg?></div>
-<?php } ?>
-                    </div>
-                    <form method="POST" action="login_code.php" class="user" >
-                      <div class="form-group">
-                        <input type="text" name="user_name" class="form-control form-control-user" id="exampleInputEmail" placeholder="Enter User Name..." required 
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" required />
-                      </div>
-                      <div class="form-group">
-                        <!-- <div class="custom-control custom-checkbox small">
-                          <input
-                            type="checkbox"
-                            class="custom-control-input"
-                            id="customCheck"
-                          />
-                          <label class="custom-control-label" for="customCheck"
-                            >Remember Me</label
-                          >
-                        </div> -->
-                      </div>
-                      <input type="submit" name="login" value="LOGIN" class="btn btn-danger btn-user btn-block">
-                    </form>
-                    <hr />
-                    <!-- <div class="text-center">
-                      <a class="small" href="forgot-password.html"
-                        >Forgot Password?</a
-                      >
-                    </div>
-                    <div class="text-center">
-                      <a class="small" href="register.html"
-                        >Create an Account!</a
-                      >
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-            </div>
+  <body class="fr-page fr-login-page">
+    <div class="fr-login">
+      <!-- Brand panel -->
+      <div class="fr-login-brand">
+        <div class="fr-login-logo">
+          <img src="assets/img/station.png" alt="Fire Rescue" />
+          <span>Fire Rescue</span>
+        </div>
+        <h2>Rescue Control Center</h2>
+        <p>Sign in to manage stations, complaints, reports and dispatch — all from one dashboard.</p>
+        <ul class="fr-login-roles">
+          <li><i class="fa-solid fa-user-shield"></i> Administrators</li>
+          <li><i class="fa-solid fa-building-shield"></i> Fire Stations</li>
+          <li><i class="fa-solid fa-truck-fast"></i> Rescue Teams</li>
+        </ul>
+      </div>
+
+      <!-- Form panel -->
+      <div class="fr-login-form">
+        <h1>Welcome back</h1>
+        <p class="fr-sub">Please sign in to your account to continue.</p>
+
+        <?php if (isset($msg)) { ?>
+        <div class="fr-login-alert">
+          <i class="fa-solid fa-circle-exclamation"></i> <?= $msg ?>
+        </div>
+        <?php } ?>
+
+        <form method="POST" action="login_code.php">
+          <div class="fr-field">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" name="user_name" class="fr-input" placeholder="Enter User Name..." required />
           </div>
+          <div class="fr-field">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" name="password" class="fr-input" placeholder="Password" required />
+          </div>
+          <button type="submit" name="login" class="fr-btn fr-btn-fire fr-btn-lg">
+            <i class="fa-solid fa-right-to-bracket"></i> Login
+          </button>
+        </form>
+
+        <div class="fr-login-back">
+          <a href="index.php"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
         </div>
       </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="assets/js/sb-admin-2.min.js"></script>
   </body>
 </html>
