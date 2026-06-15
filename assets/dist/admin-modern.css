@@ -1,0 +1,151 @@
+/* ==========================================================================
+   Fire Rescue — Admin / Dashboard modern theme
+   Layered on top of SB-Admin-2 to refine every internal page at once.
+   Self-contained (re-declares the brand variables) so it needs no other file.
+   ========================================================================== */
+
+:root {
+  --fr-red: #e11d2a;
+  --fr-red-dark: #a30f18;
+  --fr-orange: #ff7a18;
+  --fr-amber: #ffb43d;
+  --fr-blue: #3b6fe0;
+  --fr-green: #16b364;
+  --fr-ink: #140f0e;
+  --fr-muted: #8b8079;
+  --fr-cloud: #f4f5f9;
+  --fr-grad: linear-gradient(135deg, #ff7a18 0%, #e11d2a 55%, #a30f18 100%);
+  --fr-font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --fr-display: "Poppins", var(--fr-font);
+  --fr-card-shadow: 0 10px 30px -16px rgba(20,15,14,.18);
+}
+
+/* ---- base typography & background ---- */
+body { font-family: var(--fr-font) !important; background: var(--fr-cloud) !important; color: #2b2421; }
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 { font-family: var(--fr-display) !important; }
+#content-wrapper { background: var(--fr-cloud) !important; }
+
+/* ==========================================================================
+   Sidebar — refined dark theme with red active states
+   ========================================================================== */
+.sidebar, .sidebar.bg-gradient-danger {
+  background: linear-gradient(185deg, #1d1411 0%, #271713 100%) !important;
+  box-shadow: 4px 0 24px -12px rgba(20,15,14,.5);
+}
+.sidebar .sidebar-brand {
+  padding: 1.6rem 1rem; letter-spacing: .4px; font-family: var(--fr-display);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.sidebar .sidebar-brand-text { font-weight: 800 !important; }
+.sidebar-dark .sidebar-divider { border-top: 1px solid rgba(255,255,255,.07) !important; }
+.sidebar:not(.toggled) .nav-item { margin: 2px 12px; }
+.sidebar.toggled .nav-item { margin: 2px 6px; }
+.sidebar .nav-item .nav-link {
+  color: rgba(255,255,255,.72) !important; border-radius: 11px; padding: 12px 14px;
+  font-weight: 600; transition: background .2s, color .2s;
+  width: auto !important; max-width: 100%; box-sizing: border-box;
+}
+.sidebar .nav-item .nav-link i { color: rgba(255,255,255,.6); transition: color .2s; }
+.sidebar .nav-item .nav-link:hover { background: rgba(255,255,255,.07); color: #fff !important; }
+.sidebar .nav-item .nav-link:hover i { color: var(--fr-amber); }
+.sidebar .nav-item.active .nav-link {
+  background: var(--fr-grad); color: #fff !important; box-shadow: 0 10px 22px -10px rgba(225,29,42,.7);
+}
+.sidebar .nav-item.active .nav-link i { color: #fff; }
+.sidebar .collapse .collapse-inner, .sidebar .collapsing .collapse-inner {
+  border-radius: 12px !important; box-shadow: 0 12px 30px -12px rgba(0,0,0,.4);
+}
+.sidebar .collapse-item { border-radius: 8px; font-weight: 500; color: #4a4f5a; }
+.sidebar .collapse-item:hover { background: #fdefe9; color: var(--fr-red); }
+.sidebar .collapse-item.active { color: var(--fr-red); font-weight: 700; }
+.sidebar .collapse-header { color: var(--fr-muted) !important; font-weight: 700; letter-spacing: .5px; }
+.sidebar #sidebarToggle { background: rgba(255,255,255,.15); }
+.sidebar #sidebarToggle::after { color: rgba(255,255,255,.7); }
+
+/* ==========================================================================
+   Topbar
+   ========================================================================== */
+.topbar {
+  height: 4.4rem !important; background: #fff !important;
+  box-shadow: 0 2px 16px -6px rgba(20,15,14,.12) !important; border-radius: 0 0 16px 16px;
+}
+.topbar .nav-item .nav-link { color: #6b615b; }
+.topbar .img-profile { border: 2px solid var(--fr-cloud); }
+
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+.card {
+  border: 0 !important; border-radius: 16px !important;
+  box-shadow: var(--fr-card-shadow) !important; transition: transform .22s ease, box-shadow .22s ease;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 18px 42px -18px rgba(20,15,14,.3) !important; }
+.card .card-header { background: transparent; border-bottom: 1px solid rgba(20,15,14,.06); font-family: var(--fr-display); font-weight: 700; }
+
+/* ==========================================================================
+   Buttons / badges / forms / tables
+   ========================================================================== */
+.btn { border-radius: 10px !important; font-weight: 600; letter-spacing: .2px; }
+.btn-danger { background: var(--fr-grad) !important; border: 0 !important; box-shadow: 0 10px 22px -12px rgba(225,29,42,.6); }
+.btn-lg { border-radius: 12px !important; }
+.badge { border-radius: 8px; padding: .4em .7em; font-weight: 600; }
+.form-control { border-radius: 10px !important; border: 1.5px solid rgba(20,15,14,.12) !important; padding: .6rem .9rem; height: auto; }
+.form-control:focus { border-color: var(--fr-red) !important; box-shadow: 0 0 0 4px rgba(225,29,42,.12) !important; }
+.table thead th { text-transform: uppercase; font-size: 12px; letter-spacing: .5px; color: var(--fr-muted); border-bottom: 2px solid rgba(20,15,14,.08); }
+.table td, .table th { vertical-align: middle; }
+.table-hover tbody tr:hover { background: #fdefe9; }
+
+/* ==========================================================================
+   Reusable modern stat card (for dashboards)
+   ========================================================================== */
+.fr-stat-card {
+  background: #fff; border-radius: 16px; padding: 22px 24px; height: 100%;
+  display: flex; align-items: center; gap: 18px; box-shadow: var(--fr-card-shadow);
+  border-left: 5px solid var(--fr-red); transition: transform .22s ease, box-shadow .22s ease;
+}
+.fr-stat-card:hover { transform: translateY(-4px); box-shadow: 0 20px 44px -18px rgba(20,15,14,.32); }
+.fr-sc-icon { flex: 0 0 auto; width: 58px; height: 58px; border-radius: 15px; display: grid; place-items: center; font-size: 23px; color: #fff; }
+.fr-sc-meta { display: flex; flex-direction: column; }
+.fr-sc-num { font-family: var(--fr-display); font-weight: 800; font-size: 30px; line-height: 1; color: var(--fr-ink); }
+.fr-sc-label { color: var(--fr-muted); font-weight: 600; font-size: 12.5px; text-transform: uppercase; letter-spacing: .5px; margin-top: 6px; }
+.fr-page-title { font-family: var(--fr-display); font-weight: 800; color: var(--fr-ink); margin: 6px 0 22px; }
+
+/* profile rows (rescue team dashboard) */
+.fr-profile-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 2px; border-bottom: 1px solid rgba(20,15,14,.07); }
+.fr-profile-row:last-child { border-bottom: 0; }
+.fr-profile-row > span { color: var(--fr-muted); font-weight: 600; display: flex; align-items: center; gap: 10px; }
+.fr-profile-row > span i { color: var(--fr-red); width: 18px; text-align: center; }
+.fr-profile-row > strong { color: var(--fr-ink); font-weight: 700; font-size: 15px; }
+
+/* colour variants */
+.fr-sc-red    { border-left-color: #e11d2a; } .fr-sc-red .fr-sc-icon    { background: var(--fr-grad); }
+.fr-sc-blue   { border-left-color: #3b6fe0; } .fr-sc-blue .fr-sc-icon   { background: linear-gradient(135deg,#5b8def,#3b6fe0); }
+.fr-sc-green  { border-left-color: #16b364; } .fr-sc-green .fr-sc-icon  { background: linear-gradient(135deg,#2fd081,#16b364); }
+.fr-sc-amber  { border-left-color: #f5a623; } .fr-sc-amber .fr-sc-icon  { background: linear-gradient(135deg,#ffc24b,#f5a623); }
+.fr-sc-purple { border-left-color: #8b5cf6; } .fr-sc-purple .fr-sc-icon { background: linear-gradient(135deg,#a78bfa,#8b5cf6); }
+.fr-sc-slate  { border-left-color: #64748b; } .fr-sc-slate .fr-sc-icon  { background: linear-gradient(135deg,#94a3b8,#64748b); }
+
+/* ==========================================================================
+   Responsive safeguards
+   ========================================================================== */
+html, body { max-width: 100%; overflow-x: hidden; }
+#wrapper { max-width: 100%; overflow-x: hidden; }
+#content-wrapper, #content { min-width: 0; width: 100%; overflow-x: hidden; }
+.container-fluid { max-width: 100%; }
+/* Bootstrap rows must never push past the content box */
+.container-fluid > .row { margin-left: 0; margin-right: 0; }
+.container-fluid > .row > [class*="col-"] { padding-left: 12px; padding-right: 12px; }
+
+@media (max-width: 992px) {
+  .fr-page-title { font-size: 1.45rem; }
+}
+@media (max-width: 768px) {
+  .topbar { border-radius: 0; }
+  .container-fluid.px-4 { padding-left: 1rem !important; padding-right: 1rem !important; }
+  .fr-stat-card { padding: 18px; gap: 14px; }
+  .fr-sc-icon { width: 50px; height: 50px; font-size: 20px; }
+  .fr-sc-num { font-size: 26px; }
+}
+/* keep the collapsed (icon-only) sidebar tidy */
+.sidebar.toggled .nav-item .nav-link { padding: 12px 0; text-align: center; }
+.sidebar.toggled .sidebar-brand { padding: 1.2rem .25rem; }

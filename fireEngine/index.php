@@ -1,58 +1,47 @@
 <?php include 'include/header.php'; ?>
-<!-- opacity: 0.1; -->
-<?php include '../connection/connectdatabase.php'; ?>
-<div class="col-lg-9 col-md-12 col-sm-12 mx-auto">
-  
-    <div class="container">
-
-        <div class="card o-hidden border-0  my-5 bg-light">
-            <div class="card-body p-0 m-1">
-                <!-- Nested Row within Card Body -->
-                <div class="row bg-light">
-                    <div class="col-lg-12 col-md-12 ">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <!-- <p>Employee Details Form</p> -->
-                            </div>
-                            <div class="row mt-5 mx-auto">
-                              <div class="col-lg-6 col-md-12 col-sm-12 mx-auto" >
-                                <div class="d-flex text-dark mt-5">
-                                  <div class=" font-weight-bold">
-                                    <p>ID#</p>
-                                    <hr>
-                                    <p>Team Name</p>
-                                    <hr>
-                                    <p>UserName</p>
-                                    <hr>
-                                    <p>Password</p>
-                                    <hr> 
-                                  </div>
-                                  <div class="ml-5  text-dark ">
-<?php 
-$query = mysqli_query($conn,"SELECT * FROM rescue_team WHERE team_id='$team_id'");
-$data = mysqli_fetch_assoc($query);
+<?php include '../connection/connectdatabase.php';
+  $data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM rescue_team WHERE team_id='$team_id'"));
 ?>
-                                    <p><?=$data['team_id']?></p>
-                                    <hr>
-                                    <p><?=$data['team_name']?></p>
-                                    <hr>
-                                    <p><?=$data['team_username']?></p>
-                                    <hr>
-                                    <p><?=$data['team_password']?></p>
-                                    <hr>
-                                  </div>
-                                </div>
-                              </div>
-                               <div class="col-lg-6 col-sm-12 text-center" >
-                                   <img height="250px" with="450px" class="col-sm-12" src="../assets/img/team.png" alt="">
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+<div class="container-fluid px-4 py-4">
+  <h3 class="fr-page-title">Welcome, <?= htmlspecialchars($data['team_name']) ?></h3>
+
+  <div class="row">
+    <div class="col-lg-7 mb-4">
+      <div class="card h-100">
+        <div class="card-body p-4">
+          <h5 class="font-weight-bold mb-4"><i class="fas fa-id-badge text-danger mr-2"></i>Team Profile</h5>
+          <div class="fr-profile-row">
+            <span><i class="fas fa-hashtag"></i> Team ID</span>
+            <strong><?= htmlspecialchars($data['team_id']) ?></strong>
+          </div>
+          <div class="fr-profile-row">
+            <span><i class="fas fa-users"></i> Team Name</span>
+            <strong><?= htmlspecialchars($data['team_name']) ?></strong>
+          </div>
+          <div class="fr-profile-row">
+            <span><i class="fas fa-user"></i> Username</span>
+            <strong><?= htmlspecialchars($data['team_username']) ?></strong>
+          </div>
+          <div class="fr-profile-row">
+            <span><i class="fas fa-lock"></i> Password</span>
+            <strong><?= htmlspecialchars($data['team_password']) ?></strong>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="col-lg-5 mb-4">
+      <div class="card h-100">
+        <div class="card-body p-4 d-flex flex-column justify-content-center text-center">
+          <img src="../assets/img/team.png" alt="Rescue Team" style="max-width:230px; height:auto; margin:0 auto 22px;">
+          <a href="assigned_work.php" class="btn btn-danger btn-lg">
+            <i class="fas fa-map-marked-alt mr-2"></i> View Assigned Work
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 <?php include 'include/footer.php'; ?>

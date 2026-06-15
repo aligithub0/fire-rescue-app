@@ -42,6 +42,8 @@ if (!isset($_SESSION['station_id'])) {
     <!-- Custom styles for this template-->
     <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet" />
     <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link href="../assets/dist/admin-modern.css?v=4" rel="stylesheet" />
   </head>
 
   <body id="page-top">
