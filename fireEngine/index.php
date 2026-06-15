@@ -1,4 +1,4 @@
-<?php include 'include/header.php'; ?>
+<?php $page_title = 'Rescue Team Dashboard'; include 'include/header.php'; ?>
 <?php include '../connection/connectdatabase.php';
   $data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM rescue_team WHERE team_id='$team_id'"));
   $station_id = $data['station_id'];

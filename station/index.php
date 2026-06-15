@@ -1,4 +1,4 @@
-<?php include 'include/header.php';
+<?php $page_title = 'Station Dashboard'; include 'include/header.php';
 include '../connection/connectdatabase.php';
 if (!empty($_POST) AND isset($_POST['submit'])) {
   $station_latitude = $_POST['latitude'];
@@ -27,7 +27,6 @@ $cards = [
 ?>
 
 <div class="container-fluid px-4 py-4">
-  <h3 class="fr-page-title">Station Dashboard</h3>
 
   <?php if (isset($msg)) { ?>
   <div class="alert alert-<?=$status?> alert-dismissible" role="alert">

@@ -145,6 +145,9 @@ if (!isset($_SESSION['admin_id'])) {
                         <i class="fa fa-bars"></i>
                     </button>
 
+                    <!-- Page title -->
+                    <h1 class="h4 mb-0 font-weight-bold" style="font-family:var(--fr-display); color:var(--fr-ink);"><?= isset($page_title) ? htmlspecialchars($page_title) : 'Dashboard' ?></h1>
+
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 

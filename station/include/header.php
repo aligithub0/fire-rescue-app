@@ -216,8 +216,10 @@ if (!isset($_SESSION['station_id'])) {
               <i class="fa fa-bars"></i>
             </button>
 
+            <h1 class="h4 mb-0 font-weight-bold" style="font-family:var(--fr-display); color:var(--fr-ink);"><?= isset($page_title) ? htmlspecialchars($page_title) : 'Dashboard' ?></h1>
+
             <ul class="navbar-nav ml-auto">
-          
+
               <div class="topbar-divider d-none d-sm-block"></div>
 
               <!-- Nav Item - User Information -->

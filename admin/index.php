@@ -1,4 +1,4 @@
-<?php include 'include/header.php'; ?>
+<?php $page_title = 'Dashboard Overview'; include 'include/header.php'; ?>
 <?php include '../connection/connectdatabase.php';
   $num = function ($conn, $sql) { $r = mysqli_query($conn, $sql); return $r ? mysqli_num_rows($r) : 0; };
   $stations   = $num($conn, "SELECT 1 FROM station");
@@ -27,7 +27,6 @@
 ?>
 
 <div class="container-fluid px-4 py-3">
-  <h3 class="fr-page-title">Dashboard Overview</h3>
 
   <div class="row">
     <?php foreach ($cards as $c) { list($label, $count, $color, $icon) = $c; ?>
