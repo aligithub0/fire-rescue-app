@@ -32,6 +32,8 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 { font-family: var(--fr-display) !impo
   background: linear-gradient(185deg, #1d1411 0%, #271713 100%) !important;
   box-shadow: 4px 0 24px -12px rgba(20,15,14,.5);
 }
+/* slightly wider expanded sidebar */
+.sidebar:not(.toggled) { width: 18.5rem !important; }
 .sidebar .sidebar-brand {
   padding: 1.6rem 1rem; letter-spacing: .4px; font-family: var(--fr-display);
   border-bottom: 1px solid rgba(255,255,255,.06);
