@@ -34,7 +34,7 @@
 
       <div class="fr-hero-art">
         <div class="fr-glow"></div>
-        <img src="assets/img/fireengine.png" alt="Fire engine" />
+        <img src="assets/img/hero-photo.jpg" alt="Fire rescue engine" />
         <div class="fr-hero-badge fr-badge-tl">
           <i class="fa-solid fa-location-crosshairs"></i>
           <div>GPS Located<small>Auto-routed to station</small></div>

@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="assets/dist/style.css" />
 
     <!-- Modern theme (must load last so it wins) -->
-    <link rel="stylesheet" href="assets/dist/modern.css?v=6" />
+    <link rel="stylesheet" href="assets/dist/modern.css?v=10" />
   </head>
 
   <body class="fr-page">
