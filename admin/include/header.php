@@ -127,6 +127,23 @@ if (!isset($_SESSION['admin_id'])) {
             </li>
             <hr class="sidebar-divider d-none d-md-block" />
 
+            <!-- Nav Item - User Management -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
+                    aria-expanded="true" aria-controls="collapseUsers">
+                    <i class="fas fa-fw fa-users-cog"></i>
+                    <span>User Management</span>
+                </a>
+                <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Login Accounts</h6>
+                        <a class="collapse-item" href="manage_users.php">Stations &amp; Rescue Teams</a>
+                    </div>
+                </div>
+            </li>
+            <hr class="sidebar-divider d-none d-md-block" />
+
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
